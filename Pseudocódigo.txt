@@ -1,0 +1,294 @@
+Acción Farmacia es
+
+ AMBIENTE
+ sec: Secuencia de caracteres
+ secsal: Secuencia de caracteres
+ v: caracter
+ cantidad, precio: entero
+ cantidad_enero, cantidad_febrero, cantidad_marzo, cantidad_abril, cantidad_mayo, cantidad_junio, cantidad_julio, cantidad_agosto, cantidad_septiembre, cantidad_octubre, cantidad_noviembre, cantidad_diciembre: entero;
+ precio_enero, precio_febrero, precio_marzo, precio_abril, precio_mayo, precio_junio, precio_julio, precio_agosto, precio_septiembre, precio_octubre, precio_noviembre, precio_diciembre: entero;
+ m1, m2, a1, a2, a3, a4: caracter;
+
+ Procedimiento prec(v: caracter)
+ Ambiente
+ total: entero;
+ numero: entero;
+
+ Proceso
+ Escribir(': ');
+ total:=0;
+     Mientras v <> '#' hacer
+         Según v hacer 
+             '0':numero:=0;
+             '1':numero:=1;
+             '2':numero:=2;
+             '3':numero:=3;
+             '4':numero:=4;
+             '5':numero:=5;
+             '6':numero:=6;
+             '7':numero:=7;
+             '8':numero:=8;
+             '9':numero:=9;
+         Fin Según
+         total:= total*10 + numero;
+         Escribir(v);
+         AVZ(sec, v);
+    Fin Mientras
+
+ cantidad:= total;
+ Escribir(' unidades');
+
+ Si a1='2' entonces
+    Si a2='0' entonces
+        Si a3='1' entonces
+            Si a4='9' entonces
+                Si m1 = '0' entonces
+                    Según m2 hacer
+                        '1':cantidad_enero:=cantidad_enero + cantidad;
+                        '2':cantidad_febrero:=cantidad_febrero + cantidad;
+                        '3':cantidad_marzo:=cantidad_marzo + cantidad;
+                        '4':cantidad_abril:= cantidad_abril + total;
+                        '5':cantidad_mayo:= cantidad_mayo + total;
+                        '6':cantidad_junio:= cantidad_junio + total;
+                        '7':cantidad_julio:= cantidad_julio + total;
+                        '8':cantidad_agosto:= cantidad_agosto + total;
+                        '9':cantidad_septiembre:= cantidad_septiembre + total;
+                     Fin Según
+                 Sino Si m1 = '1' entonces
+                     Segun m2 hacer
+                        '0':cantidad_octubre:= cantidad_octubre + total;
+                        '1':cantidad_noviembre:= cantidad_noviembre + total;
+                        '2':cantidad_diciembre:= cantidad_diciembre + total;
+                     Fin Según
+                 Fin Si
+             Fin Si
+        Fin Si
+    Fin Si
+ Fin Si
+
+ Fin Procedimiento
+
+
+
+ Procedimiento cant(v: caracter)
+ Ambiente
+ total: entero;
+ numero: entero;
+
+ Proceso
+ total:=0;
+     Mientras v <> '#' hacer
+         Según v hacer 
+             '0':numero:=0;
+             '1':numero:=1;
+             '2':numero:=2;
+             '3':numero:=3;
+             '4':numero:=4;
+             '5':numero:=5;
+             '6':numero:=6;
+             '7':numero:=7;
+             '8':numero:=8;
+             '9':numero:=9;
+         Fin Según
+
+         total:= total*10 + numero;
+         AVZ(sec, v);
+     Fin Mientras
+
+ precio:= total;
+
+ Si a1='2' entonces
+     Si a2='0' entonces
+         Si a3='1' entonces
+             Si a4='9' entonces
+                     Si m1 = '0' entonces
+                         Segun m2 hacer
+                             '1':precio_enero:=precio_enero + (precio * cantidad);
+                             '2':precio_febrero:=precio_febrero + (precio * cantidad);
+                             '3':precio_marzo:=precio_marzo + (precio * cantidad);
+                             '4':precio_abril:= precio_abril + (precio * cantidad);
+                             '5':precio_mayo:= precio_mayo + (precio * cantidad);
+                             '6':precio_junio:= precio_junio + (precio * cantidad);
+                             '7':precio_julio:= precio_julio + (precio * cantidad);
+                             '8':precio_agosto:= precio_agosto + (precio * cantidad);
+                             '9':precio_septiembre:= precio_septiembre + (precio * cantidad);
+                         Fin Según
+                     Sino Si m1 = '1' then
+                         Según m2 hacer
+                             '0':precio_octubre:= precio_octubre + (precio * cantidad);
+                             '1':precio_noviembre:= precio_noviembre + (precio * cantidad);
+                             '2':precio_diciembre:= precio_diciembre + (precio * cantidad);
+                         Fin Según
+                    Fin Si
+             Fin Si
+        Fin Si
+    Fin Si
+ Fin Si
+
+ Fin Procedimiento
+
+
+ PROCESO
+ ARR(Sec); AVZ (Sec, v);
+ CREAR(Secsal);
+ Escribir('Se muestra por pantalla el nombre de las sustancias almacenadas seguido de la cantidad de las mismas.');
+ 
+
+ Mientras NFDS (sec) hacer
+
+ cantidad:=0;
+ precio:=0;
+     //estoy en el primer digito
+     Si v = 'L' entonces
+         //si es venta libre
+         AVZ(sec, v);
+
+         //estoy en el primer digito del dia
+         Escribir(secsal, v);
+         AVZ(sec, v);  
+
+         //estoy en el segundo digito del dia
+         write (secsal, v);
+         AVZ(sec, v); 
+
+         //copié en la secuencia de salida
+
+
+         //estoy en el primer digito del mes
+
+         m1:=v;
+         Escribir(secsal, '/');
+         //copio una '/' para darle el formato de fecha
+         Escribir(secsal, v);
+         AVZ(sec, v);
+
+         //segundo digito del mes
+         m2:=v;
+         Escribir(secsal, v);
+         AVZ(sec, v);
+
+         //estoy en el primer digito del año
+
+         a1:=v;
+         Escribir(secsal, '/');
+         //copio una '/' para darle el formato de fecha
+         Escribir(secsal, v);
+         AVZ(sec, v);
+
+         a2:=v;
+         Escribir(secsal, v);
+         AVZ(sec, v);
+
+         a3:=v;
+         Escribir(secsal, v);
+         AVZ(sec, v);
+
+         a4:=v;
+         Escribir(secsal, v);
+         AVZ(sec, v);
+         //avancé y copié la fecha de registro en la secuencia de salida
+         Escribir(secsal, '#');
+
+
+         Mientras v <> '#' hacer
+             Escribir(secsal, v);
+             Escribir(v);
+             AVZ(sec, v);
+         Fin Mientras
+
+         Escribir(secsal, '+');
+         //copio un '+' para seguir el formato del registro original
+
+         //copié fecha de registro y nombre de los medicamentos de venta libre y los mostré por pantalla. estoy en un '#'
+         AVZ(sec, v);
+
+         Mientras v <> '#' hacer
+             AVZ(sec, v);
+         Fin Mientras
+
+         //avancé el código
+         AVZ(sec, v);
+
+         //estoy en la cantidad de medicamentos
+         cant(v);
+
+         //mostré cantidad por pantalla, convertí a entero la cantidad
+         AVZ(sec, v);
+         prec(v);
+         //convertí a entero el precio
+
+     Sino Si v = 'R' entonces
+         //si es venta con receta
+         AVZ(sec, v);
+         //estoy en el primer digito del dia
+         AVZ(sec, v);
+         //estoy en el segundo digito del dia
+         AVZ(sec, v);  
+
+         //estoy en el primer digito del mes
+
+         m1:=v;
+         AVZ(sec, v);
+         //segundo digito del mes
+         m2:=v;
+         AVZ(sec, v);
+         //estoy en el primer digito del año
+         a1:=v;
+         AVZ(sec, v);
+         a2:=v;
+         AVZ(sec, v);
+         a3:=v;
+         AVZ(sec, v);
+         a4:=v;
+         AVZ(sec, v);
+
+
+         Mientras v <> '#' hacer
+             Escribir(v);
+             AVZ(sec, v);
+         Fin Mientras
+
+         //mostré por pantalla nombre del medicamento. estoy en un '#'
+
+
+         AVZ(sec, v);
+
+         Mientras v <> '#' hacer
+             AVZ(sec, v);
+         Fin Mientras
+
+         //avancé el código
+         AVZ(sec, v);
+         //estoy en la cantidad de medicamentos
+         cant(v);
+         //mostré cantidad por pantalla, convertí a entero la cantidad
+         AVZ(sec, v);
+         prec(v);
+         //convertí a entero el precio
+         
+     Fin Si
+
+     
+     AVZ(sec, v);
+     //estoy en el primer digito de un medicamento nuevo
+
+ Fin Mientras
+
+ Escribir('A continuación se emite un informe mensual de las cantidades de medicamentos ingresados y su precio total, del año 2019:');
+ Escribir('Para el mes de Enero, ingresaron: ', cantidad_enero,' medicamentos, cuyo precio total en dolares es de: USD ', precio_enero);
+ Escribir('Para el mes de Febrero, ingresaron: ', cantidad_febrero,' medicamentos, cuyo precio total en dolares es de: USD ', precio_febrero);
+ Escribir('Para el mes de Marzo, ingresaron: ', cantidad_marzo,' medicamentos, cuyo precio total en dolares es de: USD ', precio_marzo);
+ Escribir('Para el mes de Abril, ingresaron: ', cantidad_abril,' medicamentos, cuyo precio total en dolares es de: USD ', precio_abril);
+ Escribir('Para el mes de Mayo, ingresaron: ', cantidad_mayo,' medicamentos, cuyo precio total en dolares es de: USD ', precio_mayo);
+ Escribir('Para el mes de Junio, ingresaron: ', cantidad_junio,' medicamentos, cuyo precio total en dolares es de: USD ', precio_junio);
+ Escribir('Para el mes de Julio, ingresaron: ', cantidad_julio,' medicamentos, cuyo precio total en dolares es de: USD ', precio_julio);
+ Escribir('Para el mes de Agosto, ingresaron: ', cantidad_agosto,' medicamentos, cuyo precio total en dolares es de: USD ', precio_agosto);
+ Escribir('Para el mes de Septiembre, ingresaron: ', cantidad_septiembre,' medicamentos, cuyo precio total en dolares es de: USD ', precio_septiembre);
+ Escribir('Para el mes de Octubre, ingresaron: ', cantidad_octubre,' medicamentos, cuyo precio total en dolares es de: USD ', precio_octubre);
+ Escribir('Para el mes de Noviembre, ingresaron: ', cantidad_noviembre,' medicamentos, cuyo precio total en dolares es de: USD ', precio_noviembre);
+ Escribir('Para el mes de Diciembre, ingresaron: ', cantidad_diciembre,' medicamentos, cuyo precio total en dolares es de: USD ', precio_diciembre);
+
+ Cerrar(sec);
+ Cerrar(secsal);
+
+Fin Acción
