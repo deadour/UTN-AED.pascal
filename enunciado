@@ -1,0 +1,21 @@
+Una farmacia solicita obtener un informe de informacion antigua almacenada en una secuencia
+de caracteres sobre los medicamentos almacenados y procesados por los antiguos
+empleados.
+La secuencia inicia con el tipo de medicamento (L para los que son de “venta libdre" y R para
+aquellos que solo se venden con receta), la fecha de ingreso a la farmacia en el formato
+DDMMAAAA, seguido del nombre de la sustancia almacenada (que termina con #), el
+código de ese medicamento en especifico (finaliza con '#), la cantidad almacenada en
+gramos o mililitros segun corresponda (finaliza con #) y finalmente el precio en dolares por
+gramo o mililitro (finaliza con '+').
+
+Ejemplo de secuencia:
+L05062019Ibuprofeno#C2345#50#10+
+
+
+Para la solicitud se requiere:
+- Emitir por pantalla el nombre las sustancias almacenadas seguido de la cantidad de
+las mismas
+- Generar un archivo de salida con la fecha de registro y el nombre de los
+medicamentos de venta libre
+- Emitir un informe mensual de las cantidades de medicamentos ingresados y su
+precio total, del año 2019 
